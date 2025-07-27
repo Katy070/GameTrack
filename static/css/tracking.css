@@ -1,0 +1,31 @@
+.time-played-box {
+  background-color: var(--bg-light);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  color: var(--text-color);
+}
+
+#time-tracker {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+#timer-display {
+  font-weight: bold;
+  font-size: 1.2rem;
+  background-color: #222;
+  color: #0f0;
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  min-width: 100px;
+  text-align: center;
+}
+
+#start-btn, #stop-btn {
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+}

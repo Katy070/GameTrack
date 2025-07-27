@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="home-hero">
+  <div class="hero-text">
+    <h1>Welcome to <span class="highlight">GameTrack</span> <span class="emoji">🎮</span></h1>
+    <p>Track, review, and manage your game collection.</p>
+
+    <div class="cta-buttons">
+      <a href="{% url 'login' %}" class="btn">Login</a>
+      <a href="{% url 'register' %}" class="btn btn-outline">Register</a>
+      <a href="{% url 'games:game_list' %}" class="btn btn-browse">Browse Games</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

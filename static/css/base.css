@@ -1,0 +1,205 @@
+:root {
+  /* Light Mode (default) */
+  --background: #ffffff;
+  --text: #222222;
+  --text-light: #555555;
+  --accent: #007bff;
+  --border: #cccccc;
+  --card-bg: #f9f9f9;
+}
+
+body.dark-mode {
+  /* Dark Mode overrides */
+  --background: #212529;
+  --text: #f1f1f1;
+  --text-light: #aaaaaa;
+  --accent: #4ea8ff;
+  --border: #333333;
+  --card-bg: #212529;
+}
+
+
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+  text-decoration: none;
+  color: var(--accent);
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem;
+}
+
+
+
+.toggle-dark-mode {
+  background: none;
+  color: var(--text);
+  border: 2px solid var(--border);
+  padding: 0.4em 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.toggle-dark-mode:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+
+
+input,
+textarea,
+select {
+  background-color: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.6em;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-light);
+}
+
+button,
+input[type="submit"] {
+  background-color: var(--accent);
+  color: white;
+  padding: 0.6em 1.4em;
+  border: none;
+  border-radius: 0.4em;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+  cursor: pointer;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+
+.game-card,
+.review-box,
+form {
+  background-color: var(--card-bg);
+  color: var(--text);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.profile-container {
+  background-color: var(--card-bg);
+  color: var(--text);
+}
+
+
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 75vh;
+  text-align: center;
+  padding: 2em;
+  animation: fadeIn 1s ease-in;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1em;
+  font-weight: bold;
+}
+
+.highlight {
+  color: var(--accent);
+}
+
+
+
+.cta-buttons {
+  display: flex;
+  gap: 1em;
+}
+
+.btn {
+  background-color: var(--accent);
+  color: white;
+  padding: 0.6em 1.4em;
+  border-radius: 0.4em;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.btn-outline {
+  background: none;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+}
+
+.btn-outline:hover {
+  background-color: var(--accent);
+  color: white;
+}
+
+
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.emoji {
+  animation: bounce 1.5s infinite;
+  display: inline-block;
+}
+
+
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top left, rgba(0, 123, 255, 0.05), transparent 60%);
+  z-index: -1;
+}
+

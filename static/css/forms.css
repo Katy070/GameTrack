@@ -1,0 +1,141 @@
+form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--form-bg);
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background-color: var(--input-bg);
+  color: var(--text);
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(100, 149, 237, 0.2);
+}
+
+button[type="submit"] {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  transition: background 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--accent-hover);
+}
+
+.game-form-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+}
+
+.form-title {
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
+.styled-form .form-group {
+  margin-bottom: 1.2rem;
+}
+
+.styled-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+  color: var(--text-color);
+}
+
+.styled-form input,
+.styled-form select,
+.styled-form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid var(--border-color, #444);
+  border-radius: 8px;
+  background-color: var(--input-bg, #222);
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+.styled-form input:focus,
+.styled-form textarea:focus,
+.styled-form select:focus {
+  outline: none;
+  border-color: #00bfff;
+  box-shadow: 0 0 6px #00bfff88;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: #00bfff;
+  color: #fff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #009acd;
+}
+
+.btn-secondary {
+  background-color: #444;
+  color: #fff;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #666;
+}
+
+.error {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+.left-aligned-form {
+  max-width: 100% !important;
+  margin: 1rem 0 !important;
+  padding: 1.5rem !important;
+}
+
+.rating-input {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}

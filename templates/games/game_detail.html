@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% block title %}{{ game.title }} - Game Details{% endblock %}
+{% load static %}
+{% block content %}
+
+<div class="game-detail-container">
+  <!-- Left Column - Cover Image -->
+  <div class="game-cover-section">
+    {% if game.cover_image %}
+      <img src="{{ game.cover_image.url }}" class="game-cover" alt="{{ game.title }} Cover">
+    {% else %}
+      <div class="no-cover">No cover image uploaded</div>
+    {% endif %}
+  </div>
+
+  <div class="game-info">
+    <!-- Game Header -->
+    <div class="game-header">
+      <h1 class="game-title">{{ game.title }}</h1>
+      <p class="game-meta">
+        <strong>Release Date:</strong> <span class="release-date">{{ game.release_date }}</span>
+      </p>
+    </div>
+
+    <div class="game-description">
+      <p>{{ game.description }}</p>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <a href="{% url 'games:game_list' %}" class="btn btn-secondary">Back to Game List</a>
+      <a href="{% url 'games:game_edit' game.pk %}" class="btn btn-primary">Edit</a>
+      <a href="{% url 'games:game_delete' game.pk %}" class="btn btn-danger">Delete</a>
+    </div>
+
+    {% if user.is_authenticated %}
+    <div class="game-status-section left-content">
+      <h3>🎮 Your Game Status</h3>
+      <form method="post">
+        {% csrf_token %}
+        {{ status_form.status.label_tag }}
+        {{ status_form.status }}
+        <button type="submit" name="status_submit" class="btn">Update Game Status</button>
+      </form>
+
+      {% if user_game_status %}
+        <p><strong>Your Status:</strong> {{ user_game_status.get_status_display }}</p>
+      {% else %}
+        <p><strong>Your Status:</strong> Not set</p>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="reviews-section left-content">
+      <h3>Reviews</h3>
+      <!-- Average Rating -->
+      <p class="average-rating">
+        <strong>Average Rating:</strong>
+        {% for i in "12345" %}
+          {% if forloop.counter <= game.average_rating|floatformat:0 %}
+            ★
+          {% else %}
+            ☆
+          {% endif %}
+        {% endfor %}
+        ({{ game.average_rating|floatformat:1 }}/5)
+      </p>
+
+      {% if reviews %}
+        {% for review in reviews %}
+          <div class="review-box">
+            <div class="review-header">
+              <div>
+                <strong>{{ review.user.username }}</strong>
+                <span class="review-stars">
+                  {% for i in "12345" %}
+                    {% if forloop.counter <= review.rating %}★{% else %}☆{% endif %}
+                  {% endfor %}
+                </span>
+              </div>
+              {% if user == review.user %}
+                <div class="review-controls">
+                  <a href="{% url 'reviews:edit_review' review.id %}" class="btn btn-sm">Edit</a>
+                  <a href="{% url 'reviews:delete_review' review.id %}" class="btn btn-sm">Delete</a>
+                </div>
+              {% endif %}
+            </div>
+            <p class="review-content">{{ review.comment }}</p>
+            <small class="review-date">{{ review.created_at|date:"F j, Y" }}</small>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>No reviews yet.</p>
+      {% endif %}
+
+      {% if user.is_authenticated %}
+        <form method="POST" class="review-form">
+          {% csrf_token %}
+          <h4>Leave a Review</h4>
+          <div class="form-group">
+            {{ form.rating.label_tag }}
+            {{ form.rating }}
+          </div>
+          <div class="form-group">
+            {{ form.comment.label_tag }}
+            {{ form.comment }}
+          </div>
+          <button type="submit" class="btn">Post Review</button>
+        </form>
+      {% else %}
+        <p><a href="{% url 'login' %}?next={{ request.path }}">Log in</a> to write a review.</p>
+      {% endif %}
+    </div>
+
+    {% if user.is_authenticated %}
+    <div class="time-played-box">
+      <h5>⏱️ Your Time Played</h5>
+      <p>You've played this game for <strong id="user-time-played">{{ user_time_played }}</strong> hours.</p>
+      <p><strong>Current Session:</strong> <span id="timer-display">00:00:00</span></p>
+      <button id="start-btn" class="btn">Start</button>
+      <button id="stop-btn" class="btn" disabled>Stop</button>
+    </div>
+    {% endif %}
+
+    <div class="time-played-box">
+      <h5>📊 Time Played by Others</h5>
+      <ul>
+        {% for entry in all_time_played %}
+          <li>{{ entry.user.username }}: {{ entry.total_hours }} hrs</li>
+        {% empty %}
+          <li>No time tracked yet</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  const GAME_ID_FROM_TEMPLATE = {{ game.id }};
+  const CSRF_TOKEN = '{{ csrf_token }}';
+</script>
+<script src="{% static 'js/tracking.js' %}"></script>
+{% endblock %}

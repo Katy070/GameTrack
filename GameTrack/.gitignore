@@ -1,0 +1,21 @@
+# Byte-compiled / cache files
+*.py[cod]
+__pycache__/
+*.sqlite3
+
+# Environment
+.env
+venv/
+env/
+
+# Media & static
+/media/
+staticfiles/
+
+# VSCode or PyCharm
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

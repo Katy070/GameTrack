@@ -1,0 +1,166 @@
+
+.game-detail-container {
+  display: grid;
+  grid-template-columns: 250px 1fr; /* Cover + content */
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: var(--card-bg);;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.game-cover-section {
+  position: sticky;
+  top: 1.5rem;
+  align-self: start;
+}
+.game-cover {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.game-info  > *:not(:last-child) {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.game-header {
+  margin-bottom: 0.5rem;
+}
+.game-title {
+  font-size: 2rem;
+  margin: 0 0 0.5rem 0;
+  color: var(--text);
+}
+.game-meta {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+.release-date {
+  display: block;
+  margin-top: 0.3rem;
+}
+
+.game-description {
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.left-content {
+  width: 100%;
+  margin-left: 0;
+}
+
+.game-status-section {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+}
+.game-status-section h2 {
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+.reviews-section {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+.reviews-section h2 {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.review-form {
+  background-color: var(--card-bg);
+  border: 1px dashed var(--accent);
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+.review-form .rating-input {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.review-form textarea {
+  min-height: 120px;
+}
+
+.review-box {
+  background-color: var(--background);
+  border-left: 3px solid var(--accent);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 6px;
+  transition: transform 0.2s;
+}
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.review-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+.review-author {
+  font-weight: bold;
+}
+.review-rating {
+  color: #ffc107;
+}
+.review-content {
+  line-height: 1.5;
+}
+
+
+.action-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .game-detail-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .game-cover-section {
+    position: static;
+    text-align: center;
+  }
+  .game-cover {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+}
+
+
+.search-filter-form {
+
+}
+.time-played-box {
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
